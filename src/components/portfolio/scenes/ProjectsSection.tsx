@@ -42,7 +42,7 @@ const COMPLETED: CompletedProject[] = [
     title: "Davaam Website Recreation",
     tagline: "Pixel-faithful rebuild of an industrial brand site.",
     description:
-      "A ground-up recreation of the Davaam website focused on the original's visual rhythm — section transitions, hover states, and product reveal sequences rebuilt with modern tooling. Used as a craft study: matching tone, pacing, and motion choreography to a real production brand.",
+      "A ground-up recreation of the Davaam website focused on the original's visual rhythm — section transitions, hover states, and product reveal sequences rebuilt with modern tooling. Used as[...]",
     features: [
       "Section-based reveal choreography",
       "Matched typography & spacing system",
@@ -58,7 +58,7 @@ const COMPLETED: CompletedProject[] = [
     title: "Globe Radio",
     tagline: "An interactive global radio streaming experience.",
     description:
-      "Globe Radio is a web-based radio player that lets you tune into stations from around the world through a clean, minimal interface. Focused on a frictionless listening experience — pick a station, hit play, and let the world come to you. Built with a responsive layout that works as well on a phone as it does on a desktop.",
+      "Globe Radio is a web-based radio player that lets you tune into stations from around the world through a clean, minimal interface. Focused on a frictionless listening experience — pick a [...]",
     features: [
       "Live radio streaming from global stations",
       "Clean, minimal player interface",
@@ -66,7 +66,7 @@ const COMPLETED: CompletedProject[] = [
       "Fast-loading with smooth playback",
     ],
     stack: ["HTML5", "CSS3", "JavaScript", "Audio API"],
-    demo: "https://globeradio.vercel.app",
+    demo: "https://globe-radio.vercel.app/",
   },
 ];
 
@@ -76,7 +76,7 @@ const FUTURE: FutureProject[] = [
     title: "Unity Survival Game",
     status: "Currently Building",
     description:
-      "An open-world survival prototype in Unity. Focused on procedural terrain, day-night cycles, inventory systems, and enemy AI behaviors. A long-form project I'm building in parallel with client work.",
+      "An open-world survival prototype in Unity. Focused on procedural terrain, day-night cycles, inventory systems, and enemy AI behaviors. A long-form project I'm building in parallel with clie[...]",
     eta: "In Progress",
   },
   {
@@ -236,7 +236,7 @@ export function ProjectsSection() {
                 transition={{ duration: 0.7, delay: i * 0.1 }}
               >
                 <div className="relative overflow-hidden rounded-2xl border border-dashed border-white/10 bg-white/[0.01] p-6 sm:p-8 scanlines">
-                  <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full border border-[#810172]/40 bg-[#810172]/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#b14aa0]">
+                  <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full border border-[#810172]/40 bg-[#810172]/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#810172]">
                     <Hammer className="h-3 w-3" />
                     {p.status}
                   </span>
