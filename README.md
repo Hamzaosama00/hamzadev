@@ -60,6 +60,15 @@ Open http://localhost:3000 — requires Node.js 18.18+
 
 ---
 
+## 📁 Projects Included
+
+1. **Davaam Website Recreation** — Live Demo (davaam.vercel.app) + Case Study
+2. **Globe Radio** — Live Demo (globeradio.vercel.app)
+3. **Unity Survival Game** — Currently Building
+4. **SaaS Application** — Currently Building
+
+---
+
 ## 🎨 Customization
 
 ### Update contact info
@@ -83,6 +92,7 @@ Edit `src/app/globals.css` → `:root` variables.
 - Contact form: messages go to hamzaa77005@gmail.com via Resend (requires RESEND_API_KEY)
 - WhatsApp: links to https://wa.me/923182772524
 - Davaam demo: links to https://davaam.vercel.app
+- Globe Radio demo: links to https://globeradio.vercel.app
 - LinkedIn: update with your profile URL in ContactSection.tsx
 
 ## 📄 License

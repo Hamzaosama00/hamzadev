@@ -1,17 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, ExternalLink, FileText, Hammer } from "lucide-react";
+import { ArrowUpRight, ExternalLink, FileText, Hammer } from "lucide-react";
 import TiltCard from "../TiltCard";
 import MagneticButton from "../MagneticButton";
+import CaseStudyModal from "../CaseStudyModal";
 
 /**
  * ProjectsSection — DOM overlay for Scene 4.
  *
- * Two completed projects (Davaam Website Recreation, DV Smart) shown as
- * full case-study cards with tech stack, GitHub, live demo, and a case
- * study link. Two future projects (Unity Survival Game, SaaS App) shown
- * with a deliberately different "Currently Building" treatment.
+ * Two completed projects (Davaam Website Recreation, Globe Radio) shown as
+ * full case-study cards with tech stack, live demo, and (for Davaam) a case
+ * study link that opens an in-page modal. Two future projects (Unity Survival
+ * Game, SaaS App) shown with a deliberately different "Currently Building"
+ * treatment.
  */
 
 interface CompletedProject {
@@ -21,7 +24,6 @@ interface CompletedProject {
   description: string;
   features: string[];
   stack: string[];
-  github?: string;
   demo?: string;
   hasCaseStudy?: boolean;
 }
@@ -48,25 +50,23 @@ const COMPLETED: CompletedProject[] = [
       "Optimized asset pipeline",
     ],
     stack: ["HTML5", "CSS3", "JavaScript", "GSAP"],
-    github: "https://github.com/",
-    demo: "https://example.com/",
+    demo: "https://davaam.vercel.app",
     hasCaseStudy: true,
   },
   {
     index: "02",
-    title: "DV Smart",
-    tagline: "Modern industrial website for an industrial brand.",
+    title: "Globe Radio",
+    tagline: "An interactive global radio streaming experience.",
     description:
-      "A modern industrial website built for DV Smart — clean grid layouts, restrained motion, and a strong content hierarchy that lets the products lead. Designed to load fast on slower connections while still feeling premium on a flagship device.",
+      "Globe Radio is a web-based radio player that lets you tune into stations from around the world through a clean, minimal interface. Focused on a frictionless listening experience — pick a station, hit play, and let the world come to you. Built with a responsive layout that works as well on a phone as it does on a desktop.",
     features: [
-      "Industrial-strength layout system",
-      "Lazy-loaded media gallery",
-      "Mobile-first responsive grid",
-      "Accessible navigation patterns",
+      "Live radio streaming from global stations",
+      "Clean, minimal player interface",
+      "Responsive across mobile and desktop",
+      "Fast-loading with smooth playback",
     ],
-    stack: ["HTML5", "CSS3", "JavaScript", "Tailwind"],
-    github: "https://github.com/",
-    demo: "https://example.com/",
+    stack: ["HTML5", "CSS3", "JavaScript", "Audio API"],
+    demo: "https://globeradio.vercel.app",
   },
 ];
 
@@ -90,6 +90,8 @@ const FUTURE: FutureProject[] = [
 ];
 
 export function ProjectsSection() {
+  const [caseStudyOpen, setCaseStudyOpen] = useState(false);
+
   return (
     <section
       className="relative min-h-screen w-full px-6 py-24 sm:py-32"
@@ -195,21 +197,11 @@ export function ProjectsSection() {
                             Live Demo
                           </MagneticButton>
                         )}
-                        {p.github && (
-                          <MagneticButton
-                            href={p.github}
-                            variant="ghost"
-                            ariaLabel={`GitHub repository for ${p.title}`}
-                          >
-                            <Github className="h-4 w-4" />
-                            GitHub
-                          </MagneticButton>
-                        )}
                         {p.hasCaseStudy && (
                           <MagneticButton
-                            href={p.demo}
                             variant="outline"
                             ariaLabel={`Case study for ${p.title}`}
+                            onClick={() => setCaseStudyOpen(true)}
                           >
                             <FileText className="h-4 w-4" />
                             Case Study
@@ -244,12 +236,10 @@ export function ProjectsSection() {
                 transition={{ duration: 0.7, delay: i * 0.1 }}
               >
                 <div className="relative overflow-hidden rounded-2xl border border-dashed border-white/10 bg-white/[0.01] p-6 sm:p-8 scanlines">
-                  {/* corner marker */}
                   <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full border border-[#810172]/40 bg-[#810172]/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#b14aa0]">
                     <Hammer className="h-3 w-3" />
                     {p.status}
                   </span>
-
                   <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
                     Project {p.index} · {p.eta}
                   </span>
@@ -259,7 +249,6 @@ export function ProjectsSection() {
                   <p className="mt-3 text-[13px] leading-relaxed text-white/45">
                     {p.description}
                   </p>
-
                   <div className="mt-6 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-white/30">
                     <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[#810172]" />
                     Under Active Development
@@ -270,6 +259,12 @@ export function ProjectsSection() {
           </div>
         </div>
       </div>
+
+      {/* Case Study Modal */}
+      <CaseStudyModal
+        open={caseStudyOpen}
+        onClose={() => setCaseStudyOpen(false)}
+      />
     </section>
   );
 }
